@@ -1,0 +1,56 @@
+---
+title: "Tech Financials"
+author: "Ben Hoffman"
+date: "9/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(haven)
+library(psych)
+library(here)
+
+#This is the first RMarkdown for Fall 2021
+```
+
+##Reading Data
+
+Read in a Sdata file from haven package
+```{r}
+
+first_data <- read_dta("tech_co_cstat_dta.zip")
+
+
+```
+
+Look at different aspects of the data
+```{r}
+class(first_data)
+
+names(first_data)
+
+head(first_data)
+
+tail(first_data)
+```
+
+Subset dataset
+```{r}
+first_data[15:20, ]
+```
+
+Metadata of the set
+```{r}
+attributes(first_data$gvkey)
+```
+
+Change label for metadata
+```{r}
+attributes(first_data$datadate)$label <- "Fiscal Year End Data"
+
+attributes(first_data$datadate)
+```
+
